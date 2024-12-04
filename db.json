@@ -1,0 +1,502 @@
+{
+  "users": [
+    {
+      "id": "4845",
+      "name": {
+        "firstname": "mohammadreza",
+        "lastname": "bitarafan"
+      },
+      "email": "mrbf110@yahoo.com",
+      "password": "123456",
+      "username": "mrbf119`",
+      "phone": "09128929728",
+      "contry": "Iran",
+      "city": "Tehran",
+      "address": "Pasdaran , bostan 7 No 12 first floor",
+      "number": "12"
+    }
+  ],
+  "category": [
+    {
+      "id": "aa33",
+      "title": "womens clothing",
+      "description": "womens clothing",
+      "status": "Enable"
+    },
+    {
+      "id": "37a0",
+      "title": "mens clothing",
+      "description": "mens clothing",
+      "status": "Enable"
+    },
+    {
+      "id": "d5d0",
+      "title": "men accessories",
+      "description": "men accessories",
+      "status": "Enable"
+    },
+    {
+      "id": "356c",
+      "title": "women accessories",
+      "description": "women accessories",
+      "status": "Enable"
+    },
+    {
+      "id": "d6e4",
+      "title": "beauty",
+      "description": "beauty",
+      "status": "Enable"
+    },
+    {
+      "id": "8f20",
+      "title": "men shoes",
+      "description": "men shoes",
+      "status": "Enable"
+    },
+    {
+      "id": "033a",
+      "title": "women shoes",
+      "description": "women shoes",
+      "status": "Enable"
+    }
+  ],
+  "products": [
+    {
+      "id": "0a89",
+      "title": "Men's long sleeve shirt with two pockets",
+      "price": "13.99",
+      "count": "5",
+      "discount": "2",
+      "status": "Avalibake",
+      "category": "mens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/d2325ea4d6617c4b3d59e9dcb352158fdf298da8_1725717722.jpg?x-oss-process=image/resize,w_1600/quality,q_80",
+      "amazed": "true"
+    },
+    {
+      "id": "09f2",
+      "title": "Men's long sleeve Jack and Jones model shirt",
+      "price": "12.89",
+      "count": "3",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "mens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/abe0a21f4416cdb77fbe7e5e9b5e399625c5f643_1718031865.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "42a3",
+      "title": "Mango long sleeve shirt for men",
+      "price": "15.19",
+      "count": "10",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "mens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/4a73e820e219296c866932e67338995d319ddba6_1693833189.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "d2f2",
+      "title": "Chrome men's long sleeve shirt",
+      "price": "11.56",
+      "count": "5",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "mens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/0c759a8d040b7d2750adc5051bc92049b31cd447_1723706127.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "1998",
+      "title": "Men's long sleeve shirt with button collar",
+      "price": "20",
+      "count": "5",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "mens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/797e023f0ea3e44acc8f3000f001f723bf7ec166_1728901761.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "cbc8",
+      "title": "Men's chrome long sleeve shirt, linen shirt model",
+      "price": "12",
+      "count": "5",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "mens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/a80cb54b38f3350b8d928a3fc304e69bff6da28d_1725876406.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "6901",
+      "title": "Men's chrome long sleeve shirt with two linen pockets",
+      "price": "11.69",
+      "count": "8",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "mens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/8951542a82f6c6e6b10efd8c2d0eb838fb0238dc_1723536152.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "f1dc",
+      "title": "Men's long sleeve golf shirt",
+      "price": "9.50",
+      "count": "9",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "mens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/2e2481e472b87f3067220f1d4e9b3736c1aaa66d_1647598562.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "98b1",
+      "title": "Jack & Jones men's long sleeve shirt",
+      "price": "14.63",
+      "count": "7",
+      "discount": "-1",
+      "status": "Avalibake",
+      "category": "mens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/2de09bf288733c1af831b1c966da4da65c0ae0df_1716981994.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "68d3",
+      "title": "Hawaiian short sleeve shirt for men",
+      "price": "8",
+      "count": "3",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "mens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/ec0252e0a41cd7c1dbea3beb4b3ab85e547d3e43_1719130747.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "74f0",
+      "title": "Anonymous wristwatch for men",
+      "price": "200",
+      "count": "5",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "men accessories",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/44f963758815b32b659495aec7b5b6ada41075d1_1694344302.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "9710",
+      "title": "Men's wristwatch Rado model",
+      "price": "250",
+      "count": "5",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "men accessories",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/7de3d6da6b330abd23444ddfae42f392969efe8c_1719477470.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "eae0",
+      "title": "Men's wristwatch coin watch model",
+      "price": "280",
+      "count": "5",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "men accessories",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/07aaa0f11f480282083aa44d736fc90cc7d2a454_1597213460.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "61b8",
+      "title": "AIN men's wristwatch",
+      "price": "189",
+      "count": "5",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "men accessories",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/d94ce333e9e1282e5bde504798e797c64009d998_1699456643.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "d2a2",
+      "title": "Edox wristwatch for men",
+      "price": "310",
+      "count": "5",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "men accessories",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/df25a624183856d9d03dda1c7dba68be0b885ea2_1723540843.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "380f",
+      "title": "New Nile women's hooded sweatshirt",
+      "price": "8.54",
+      "count": "5",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "womens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/a5832bd78639199f7a1a94eab194db15a622f6ab_1726642046.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "9114",
+      "title": "Sarge women's long sleeve blouse",
+      "price": "11",
+      "count": "5",
+      "discount": "-1",
+      "status": "Avalibake",
+      "category": "womens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/289420595f69735596bd77e63003fbc24310dbbd_1724750079.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "1d95",
+      "title": "Sarge women's long sleeve blouse",
+      "price": "12",
+      "count": "6",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "womens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/41d2381d9e456ef4c64ebcedf18afd07462ed8cc_1666427550.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "a41d",
+      "title": "Michael Kors women's long sleeve blouse",
+      "price": "6.99",
+      "count": "12",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "womens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/63871687758a1cfd29f280e6b2303c53117ddbaa_1725698355.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "e3d2",
+      "title": " Women's leather jacket Sarzem Leather Model Nicole",
+      "price": "56.99",
+      "count": "7",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "womens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/ca77ec488064d2274d4ccf3838ea7b78fe7c56d1_1635938067.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "e597",
+      "title": "Jimmy Saunders women's shirt",
+      "price": "17",
+      "count": "2",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "womens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/27a1aa8c89cfb5a07a09d50ddbce0aa98fe9d0c4_1689891690.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "d798",
+      "title": "S.Oliver women's ski neck sweater",
+      "price": "14.22",
+      "count": "3",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "womens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/15664ecda174e98ce7861a58c42493e7b006c8a1_1698770737.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "ee45",
+      "title": "DKNY women's shirt",
+      "price": "6.85",
+      "count": "11",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "womens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/a613844ad16ef15f5e84b121c1358cd7be730a11_1728287620.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "883a",
+      "title": "My jewelry women's shirt",
+      "price": "36.65",
+      "count": "4",
+      "discount": "-1",
+      "status": "Avalibake",
+      "category": "womens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/3a48811c3188f0146e59ed1a322ce0b70009e6d9_1721255310.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "53d7",
+      "title": "Frédéric Constant FC-200WHD1ERD32B women's wristwatch",
+      "price": "798",
+      "count": "5",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "women accessories",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/5a3ee257f410b8ef5cb135a91c0f1fb7b0a8f097_1691920659.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "6019",
+      "title": "H992 women's wristwatch model MH2AC08.BMBDH2A",
+      "price": "670",
+      "count": "7",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "women accessories",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/ef5461d91b3e799c1792021025a07eece7a8700b_1723541436.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "3c0f",
+      "title": "Rado women's wristwatch model 764.0413.3.026",
+      "price": "450",
+      "count": "3",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "women accessories",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/9138b05c5d2aa0c8a6af7fd28f9d099bb0532e24_1722337284.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "b80f",
+      "title": "Women's hand watch, material, model 0607354",
+      "price": "359",
+      "count": "4",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "women accessories",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/30f158e1dfad20b1c29994eab99128d3d2ed9903_1602676683.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "5d01",
+      "title": "Salvatore Ferragamo wristwatch model SFKR001 23",
+      "price": "450",
+      "count": "4",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "women accessories",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/031abca1e3c6a61667725c606d8cb8c5a2c67e68_1700565824.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "bc67",
+      "title": "Versace women's wristwatch model VE8C00524",
+      "price": "930",
+      "count": "3",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "womens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/c1a184a373c50565180ecbff55eb170db9b31b52_1718179228.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "5318",
+      "title": "Salvatore Ferragamo women's wristwatch model SFDT01920",
+      "price": "345",
+      "count": "4",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "women accessories",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/3c34543c0cff25c504b62f8d728d65ae9eb4bf7a_1726565581.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "4041",
+      "title": "Versace women's wristwatch model VE8D00524",
+      "price": "700",
+      "count": "2",
+      "discount": "-2",
+      "status": "Avalibake",
+      "category": "women accessories",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/c5ab2f610eb5ea9c6fb877a80089bbfcd4991100_1720615685.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "c2a1",
+      "title": "Albert Riley women's wristwatch, model 513LQ03-SY99D-TW-K1",
+      "price": "299",
+      "count": "3",
+      "discount": "0",
+      "status": "Avalibake",
+      "category": "women accessories",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/1183630.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    }
+  ],
+  "admins": [
+    {
+      "id": "eca6",
+      "phone": "09128929728",
+      "password": "admin",
+      "username": "mohammadreza"
+    },
+    {
+      "id": "422f",
+      "phone": "09121716880",
+      "password": "123456",
+      "username": "Ali"
+    }
+  ],
+  "top-products": [
+    {
+      "id": "1",
+      "name": "Mens Cotton Jacket",
+      "popularity": "45",
+      "color": "#0195FF"
+    },
+    {
+      "id": "2",
+      "name": "Solid Gold Petite Micropave",
+      "popularity": "29",
+      "color": "#00E097"
+    },
+    {
+      "id": "3",
+      "name": "Pierced Owl Rose Gold Plated",
+      "popularity": "18",
+      "color": "#884DFF"
+    },
+    {
+      "id": "4",
+      "name": "Samsung 49-Inch CHG90 ",
+      "popularity": "25",
+      "color": "#FF8F0D"
+    }
+  ],
+  "cart": [],
+  "orders": [
+    {
+      "id": "c9ff",
+      "userId": "4845",
+      "items": [
+        {
+          "id": "0b26",
+          "userId": "4845",
+          "productId": "eae0",
+          "title": "Men's wristwatch coin watch model",
+          "price": "280",
+          "discount": "0",
+          "image": "https://dkstatics-public.digikala.com/digikala-products/07aaa0f11f480282083aa44d736fc90cc7d2a454_1597213460.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+        }
+      ]
+    },
+    {
+      "id": "2354",
+      "userId": "4845",
+      "items": [
+        {
+          "id": "b9c8",
+          "userId": "4845",
+          "productId": "380f",
+          "title": "New Nile women's hooded sweatshirt",
+          "price": "8.54",
+          "discount": "0",
+          "image": "https://dkstatics-public.digikala.com/digikala-products/a5832bd78639199f7a1a94eab194db15a622f6ab_1726642046.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+        }
+      ]
+    }
+  ]
+}
