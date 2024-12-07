@@ -8,26 +8,26 @@ import useSWR from 'swr';
 const Orders = () => {
     const fetcher = (url) => axios.get(url).then((res) => res.data);
 
-    const { data: orders, error } = useSWR('http://localhost:8001/orders', fetcher, { refreshInterval: 10000 });
+    const { data: orders, error } = useSWR('/api/order', fetcher, { refreshInterval: 10000 });
 
     const renderCell = useCallback((order, columnKey) => {
         switch (columnKey) {
-            case "UserId":
-                return <p className="text-bold text-sm capitalize text-default-400">{"#"}{order?.userId}</p>;
+            case "Product Id":
+                return <p className="text-bold text-sm capitalize text-default-400">{"#"}{order.productId}</p>;
             case "Product":
                 return (
                     <div className="flex flex-col">
-                        <p className="text-bold text-sm capitalize">{order?.items[0]?.title}</p>
+                        <p className="text-bold text-sm capitalize">{order.title}</p>
                     </div>
                 );
             case "Price":
-                return <p className="text-bold text-sm capitalize text-default-400">{order?.items[0]?.price} $</p>;
+                return <p className="text-bold text-sm capitalize text-default-400">{order.price} $</p>;
             case "Image":
                 return (
                     <Image
                         width={100}
                         height={100}
-                        src={order?.items[0]?.image}
+                        src={order.image}
                         alt="Order item image"
                         
                     />
@@ -48,7 +48,7 @@ const Orders = () => {
 
             <Table layout="fixed" aria-label="Orders table" scroll={{ x: '100vw' }}>
                 <TableHeader columns={[
-                    { uid: "UserId", name: "UserId" },
+                    { uid: "Product Id", name: "Product Id" },
                     { uid: "Product", name: "Product" },
                     { uid: "Price", name: "Price" },
                     { uid: "Image", name: "Image" }

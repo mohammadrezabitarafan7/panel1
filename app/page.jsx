@@ -24,36 +24,45 @@ const LoginPage = () => {
   const { SetUser } = useContext(AuthContext)
   const [admins, setAdmins] = useState([])
   const onSubmit = async (data) => {
+    setData(data);
+    setLoading(true);
 
-    setData(data)
     try {
-      setLoading(true)
-      const response = await axios.get(`http://localhost:8001/admins`, {
-        params: {
-          phone: data.phone,
-          password: data.password
-        }
+      // ارسال درخواست ورود
+      const response = await axios.post('/api/admins/login', {
+        phone: data.phone,
+        password: data.password,
       });
 
-      if (response.data.length > 0) {
-        // setUserExist(true)
-        // setLoading(false)
-        SetUser(response.data[0].id)
-        router.push('/dashboard');
-      }
-      else {
-        // setUserExist(false)
-        setReg(true)
-        setLoading(false)
-        toast.error("Admin not Found")
+      if (response.status === 200) {
+        SetUser(response.data.id);
+        router.replace('/dashboard');
       }
     } catch (error) {
-      // setUserExist(false)
-      setLoading(false)
-      setReg(false)
-
+      if (error.response) {
+        switch (error.response.status) {
+          case 401:
+            toast.warning("Please Register User");
+            setReg(true);
+            break;
+          case 500:
+            toast.error("Internal server error. Please try again later.");
+            break;
+          default:
+            toast.error(`Unexpected error: ${error.response.status}`);
+        }
+      } else if (error.request) {
+        toast.error("Server not responding. Please check your connection.");
+      } else {
+        toast.error("An unexpected error occurred.");
+      }
+    } finally {
+      setLoading(false);
     }
-  }
+  };
+
+
+
   return (
 
     <div className="w-full flex justify-center items-center h-screen bg-neutral-950 flex-col ">
@@ -122,7 +131,7 @@ const LoginPage = () => {
       </div>
       {/* <Button onClick={GetUsers} >Gen JWT</Button> */}
       <BackgroundBeams />
-      <ToastContainer pauseOnHover={false} autoClose={1000} theme="dark"/>
+      <ToastContainer pauseOnHover={false} autoClose={1000} theme="dark" />
     </div >
   );
 }

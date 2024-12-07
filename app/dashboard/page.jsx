@@ -22,15 +22,14 @@ export default function Home() {
   }, [CheckUser, GetUser]);
 
   const fetcher = (url) => axios.get(url).then((res) => res.data);
-  const { data: orders, error: usersError } = useSWR('http://localhost:8001/orders', fetcher, { refreshInterval: 20000 });
-  const { data: products, error: productsError } = useSWR('http://localhost:8001/products', fetcher, { refreshInterval: 20000 });
-  const { data: users } = useSWR('http://localhost:8001/users', fetcher,);
-  const { data: category } = useSWR('http://localhost:8001/category', fetcher,);
+  const { data: orders, error: usersError } = useSWR('/api/order', fetcher, { refreshInterval: 20000 });
+  const { data: products, error: productsError } = useSWR('/api/products/get-product', fetcher, { refreshInterval: 20000 });
+  const { data: users } = useSWR('/api/user/get-user', fetcher,);
+  const { data: category } = useSWR('/api/category/add-category', fetcher,);
 
-  if (!products || !orders || !users || !category) {
+  if (!products  || !users || !category) {
     return <div><Loading /></div>;
   }
-
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-row gap-4 max-md:flex-col">

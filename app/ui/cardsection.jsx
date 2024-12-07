@@ -59,7 +59,7 @@ const SectionCard = (props) => {
                     )}>Todays Sales</h1>
                     <h1 className={clsx(
                         'text-sm my-2',
-                        dark ? 'text-neutral-500' :'text-white'
+                        dark ? 'text-neutral-500' : 'text-white'
                     )}>Sales Summery</h1>
                 </div>
                 <Button className="px-8 border border-[#5D60EF] bg-white text-black" size="sm" >
@@ -81,9 +81,6 @@ const SectionCard = (props) => {
                 ))}
             </div>
         </div>
-
-
-
     )
 }
 export default SectionCard

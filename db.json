@@ -424,6 +424,17 @@
       "category": "women accessories",
       "amazing": "true",
       "image": "https://dkstatics-public.digikala.com/digikala-products/1183630.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
+    },
+    {
+      "id": "1733",
+      "title": "1",
+      "price": "1",
+      "count": "1",
+      "discount": "1",
+      "status": "Avalibake",
+      "category": "mens clothing",
+      "amazing": "true",
+      "image": "https://dkstatics-public.digikala.com/digikala-products/5a3ee257f410b8ef5cb135a91c0f1fb7b0a8f097_1691920659.jpg?x-oss-process=image/resize,w_1600/quality,q_80"
     }
   ],
   "admins": [
@@ -438,6 +449,90 @@
       "phone": "09121716880",
       "password": "123456",
       "username": "Ali"
+    },
+    {
+      "id": "c23f",
+      "params": {
+        "phone": "09126368543",
+        "password": "123456"
+      }
+    },
+    {
+      "id": "fbe9",
+      "params": {
+        "phone": "09126368543",
+        "password": "123456"
+      }
+    },
+    {
+      "id": "9aba",
+      "params": {
+        "phone": "09126368543",
+        "password": "123456"
+      }
+    },
+    {
+      "id": "ff0c",
+      "params": {
+        "phone": "09126368543",
+        "password": "123456"
+      }
+    },
+    {
+      "id": "42f6",
+      "params": {
+        "phone": "09126368543",
+        "password": "123456"
+      }
+    },
+    {
+      "id": "5006",
+      "params": {
+        "phone": "09128929728",
+        "password": "admin"
+      }
+    },
+    {
+      "id": "37e9",
+      "params": {
+        "phone": "09128929728",
+        "password": "admin"
+      }
+    },
+    {
+      "id": "5c00",
+      "params": {
+        "phone": "09128929728",
+        "password": "admin"
+      }
+    },
+    {
+      "id": "815d",
+      "params": {
+        "phone": "09121716880",
+        "password": "123456"
+      }
+    },
+    {
+      "id": "d23d",
+      "params": {
+        "phone": "09128929728",
+        "password": "123456"
+      }
+    },
+    {
+      "id": "ad8b",
+      "params": {
+        "phone": "09128929728",
+        "password": "123456"
+      }
+    },
+    {
+      "id": "ba40",
+      "params": {
+        "phone": "09128929728",
+        "password": "123456"
+      }
     }
   ],
   "top-products": [

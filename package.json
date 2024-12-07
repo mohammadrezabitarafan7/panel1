@@ -17,6 +17,7 @@
     "@mui/material": "^6.1.4",
     "@nextui-org/react": "^2.4.8",
     "axios": "^1.7.7",
+    "better-sqlite3": "^11.6.0",
     "chart.js": "^4.4.5",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.9",

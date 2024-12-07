@@ -8,11 +8,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AddProducts = () => {
-
     const [category, setCategory] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8001/category')
+        axios.get('/api/category/add-category ')
             .then(response => {
                 setCategory(response.data);
                 console.log(response.data)
@@ -25,19 +24,41 @@ const AddProducts = () => {
 
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [data, setData] = useState("");
     const router = useRouter();
     const onSubmit = async (data) => {
-        setData(data)
-        await axios.post('http://localhost:8001/products', data);
-
-        toast.success("Product Added Successfully")
-        router.back();
         try {
+            const response = await axios.post('/api/products/add-product', {
+                title: data.title,
+                price: data.price,
+                count: data.count,
+                discount: data.discount,
+                status: data.status,
+                category: data.category,
+                amazing: data.amazing,
+                image: data.image
+            });
+    
+            if (response.status === 201) {
+                toast.success("Product added successfully");
+                router.replace("/dashboard/products")
+            } else {
+                toast.error("Error: " + response.status);
+            }
         } catch (error) {
-            toast.error(error.message)
+            if (error.response) {
+                console.error('Error Response:', error.response);
+                toast.error(`Server Error: ${error.response.status} - ${error.response.data.message}`);
+            } else if (error.request) {
+                console.error('Error Request:', error.request);
+                toast.error("Error: No response from server");
+            } else {
+                console.error('Error Message:', error.message);
+                toast.error(`Error: ${error.message}`);
+            }
         }
-    }
+    };
+    
+
     const back = () => {
         router.back();
     }

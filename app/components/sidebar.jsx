@@ -9,6 +9,8 @@ import axios from 'axios';
 import clsx from "clsx";
 import { ChartPieIcon, ShoppingBagIcon, ArrowRightOnRectangleIcon, UsersIcon, ShoppingCartIcon, Square3Stack3DIcon,RocketLaunchIcon } from '@heroicons/react/24/outline';
 import { AuthContext } from '../context/auth-context/contaxt';
+import useSWR from 'swr';
+
 
 const SideBar = () => {
     const links = [
@@ -21,26 +23,26 @@ const SideBar = () => {
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const router = useRouter();
-    const [admin, setAdmin] = useState({});
     const pathname = usePathname();
     const { dark } = useContext(ThemeContext);
     const { LogOut } = useContext(AuthContext);
 
 
-    useEffect(() => {
-        const fetchAdmin = async () => {
-            const userId = Cookie.get('user');
-            if (userId) {
-                try {
-                    const response = await axios.get(`http://localhost:8001/admins/${userId}`);
-                    setAdmin(response.data);
-                } catch (error) {
-                    console.error('خطا در دریافت اطلاعات ادمین:', error);
-                }
-            }
-        };
-        fetchAdmin();
-    }, []);
+
+    // useEffect(() => {
+    //     const fetchAdmin = async () => {
+    //         const userId = Cookie.get('user');
+    //         if (userId) {
+    //             try {
+    //                 const response = await axios.get(`/api/admins/get-admin?id=${id}`);
+    //                 setAdmin(response.data);
+    //             } catch (error) {
+    //                 console.error('خطا در دریافت اطلاعات ادمین:', error);
+    //             }
+    //         }
+    //     };
+    //     fetchAdmin();
+    // }, []);
 
     const signOut = () => {
         LogOut();

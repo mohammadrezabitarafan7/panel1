@@ -1,5 +1,5 @@
 'use client';
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Skeleton, user } from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Skeleton } from "@nextui-org/react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Button, Tooltip } from "@nextui-org/react";
 import React, { useEffect, useState, useCallback } from 'react';
 import axios from "axios";
@@ -8,94 +8,83 @@ import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import EditIcon from '@mui/icons-material/Edit';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useSWR, { mutate } from 'swr';
 
-const Useres = () => {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+// تعریف fetcher برای دریافت داده‌ها
+const fetcher = (url) => axios.get(url).then((res) => res.data);
+
+const Users = () => {
     const [userIdToDelete, setUserIdToDelete] = useState(null);
     const [userIdToEdit, setUserIdToEdit] = useState(null);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
 
-    const router = useRouter();
-
     const { isOpen: isDeleteModalOpen, onOpen: onDeleteOpen, onOpenChange: onDeleteOpenChange } = useDisclosure();
     const { isOpen: isEditModalOpen, onOpen: onEditOpen, onOpenChange: onEditOpenChange } = useDisclosure();
+    
+    const { data, error, isLoading } = useSWR('/api/user/add-user', fetcher);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('http://localhost:8001/users');
-                const sortedData = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-                setData(sortedData);
-            } catch (error) {
-                setError('خطا در دریافت داده‌ها');
-                console.error('خطا در دریافت داده‌ها:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchData();
-    }, []);
+    const router = useRouter();
 
     const deleteUser = async () => {
         try {
             if (userIdToDelete) {
-                await axios.delete(`http://localhost:8001/users/${userIdToDelete}`);
-                setData(prevData => prevData.filter(user => user.id !== userIdToDelete));
-                toast.success("User Deleted")
-                setUserIdToDelete(null);
+                const response = await axios.post('/api/user/delete-user', { userIdToDelete });
+                if (response.status === 200) {
+                    // به‌روزرسانی کش با استفاده از mutate
+                    mutate('/api/user/add-user', (data) => data.filter(user => user.userId !== userIdToDelete), false);
+                    toast.success("User Deleted");
+                    setUserIdToDelete(null);
+                }
             }
         } catch (error) {
-            console.error('خطا در حذف کاربر:', error);
+            toast.error("Error deleting user.");
+            console.error(error);
         } finally {
             onDeleteOpenChange();
         }
-    }
+    };
+
     const editUser = async () => {
         try {
             if (!firstName || !lastName) {
-                toast.warning("Please Fill The Values")
+                toast.warning("Please Fill The Values");
                 return;
             }
-            const response = await axios.patch(`http://localhost:8001/users/${userIdToEdit}`, {
-                name: {
-                    firstname: firstName,
-                    lastname: lastName
-                }
+
+            const response = await axios.patch('/api/user/edit-user', {
+                userIdToEdit, 
+                firstName,
+                lastName 
             });
+
             if (response.status === 200) {
-                setData(prevData =>
-                    prevData.map(user =>
-                        user.id === userIdToEdit
-                            ? {
-                                ...user,
-                                name: {
-                                    firstname: firstName,
-                                    lastname: lastName
-                                }
-                            }
+                // به‌روزرسانی کش با استفاده از mutate
+                mutate('/api/user/add-user', (data) => 
+                    data.map(user =>
+                        user.userId === userIdToEdit
+                            ? { ...user, firstname: firstName, lastname: lastName }
                             : user
-                    )
-                );
+                    ), false);
+
                 setUserIdToEdit(null);
-                toast.success("User Eddited");
-                onEditOpenChange();
+                toast.success("User Edited");
+                onEditOpenChange(); // بستن فرم ویرایش
             }
         } catch (error) {
-            console.log(error.messgae)
+            toast.error("Something went wrong. Please try again.");
+            console.error(error);
         }
-    }
+    };
+
     const renderCell = useCallback((user, columnKey) => {
         switch (columnKey) {
             case "ID":
-                return <p className="text-bold text-sm capitalize text-default-400">{"#"}{user.id}</p>;
+                return <p className="text-bold text-sm capitalize text-default-400">{"#"}{user.userId}</p>;
             case "NAME":
                 return (
                     <div className="flex flex-col">
-                        <p className="text-bold text-sm capitalize">{user.name.firstname}{"-"}{user.name.lastname}</p>
+                        <p className="text-bold text-sm capitalize">{user.firstname}{"-"}{user.lastname}</p>
                         <p className="text-bold text-sm capitalize text-default-400">{user.email}</p>
                     </div>
                 );
@@ -112,8 +101,8 @@ const Useres = () => {
                             <span className="text-lg text-danger cursor-pointer active:opacity-50">
                                 <DeleteRoundedIcon
                                     onClick={() => {
-                                        setUserIdToDelete(user.id);
-                                        onDeleteOpen(); // باز کردن Modal حذف
+                                        setUserIdToDelete(user.userId);
+                                        onDeleteOpen();
                                     }}
                                 />
                             </span>
@@ -123,10 +112,10 @@ const Useres = () => {
                             <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                                 <EditIcon
                                     onClick={() => {
-                                        setFirstName(user.name.firstname)
-                                        setLastName(user.name.lastname)
-                                        setUserIdToEdit(user.id);
-                                        onEditOpen(); // باز کردن Modal ویرایش
+                                        setFirstName(user.firstname);
+                                        setLastName(user.lastname);
+                                        setUserIdToEdit(user.userId);
+                                        onEditOpen();
                                     }}
                                 />
                             </span>
@@ -140,7 +129,7 @@ const Useres = () => {
 
     const addUser = () => {
         router.push('/dashboard/users/adduser');
-    }
+    };
 
     return (
         <div className="flex flex-col gap-3">
@@ -151,7 +140,7 @@ const Useres = () => {
                 </Button>
             </div>
             {error && <p className="text-red-500">{error}</p>}
-            {loading ? (
+            {isLoading ? (
                 <Skeleton className="rounded-xl">
                     <div className="flex flex-col gap-4">
                         {[...Array(5)].map((_, index) => (
@@ -160,10 +149,7 @@ const Useres = () => {
                     </div>
                 </Skeleton>
             ) : (
-          
-                <Table
-                    aria-label="Example table with custom cells"
-                     layout="fixed">
+                <Table aria-label="Example table with custom cells" layout="fixed">
                     <TableHeader columns={[
                         { uid: "ID", name: "id" },
                         { uid: "NAME", name: "name" },
@@ -180,17 +166,15 @@ const Useres = () => {
                     </TableHeader>
                     <TableBody items={data}>
                         {(item) => (
-                            <TableRow key={item.id}>
+                            <TableRow key={item.userId}>
                                 {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
                             </TableRow>
                         )}
                     </TableBody>
                 </Table>
-             
             )}
-    
 
-            {/* modal for delete user */}
+            {/* Modal for delete user */}
             <Modal placement="center" backdrop="blur" isOpen={isDeleteModalOpen} onOpenChange={onDeleteOpenChange}>
                 <ModalContent>
                     {onClose => (
@@ -214,7 +198,7 @@ const Useres = () => {
                 </ModalContent>
             </Modal>
 
-            {/* modal for edit user */}
+            {/* Modal for edit user */}
             <Modal placement="center" backdrop="blur" isOpen={isEditModalOpen} onOpenChange={onEditOpenChange}>
                 <ModalContent>
                     {onClose => (
@@ -229,7 +213,6 @@ const Useres = () => {
                                         value={firstName}
                                         onChange={(e) => setFirstName(e.target.value)}
                                     />
-
                                     <span className=" font-semibold">Last Name :</span>
                                     <input
                                         type="text"
@@ -254,5 +237,6 @@ const Useres = () => {
             <ToastContainer pauseOnHover={false} autoClose={1000} theme="dark" />
         </div>
     );
-}
-export default Useres;
+};
+
+export default Users;

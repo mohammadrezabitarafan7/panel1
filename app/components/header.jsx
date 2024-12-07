@@ -29,7 +29,7 @@ const Header = () => {
   }, [CheckUser, GetUser]);
 
   const fetcher = (url) => axios.get(url).then((res) => res.data);
-  const { data: admin } = useSWR(`http://localhost:8001/admins?id=${id}`, fetcher)
+  const { data: admin } = useSWR(`/api/admins/get-admin?id=${id}`, fetcher)
 
 
 
@@ -117,7 +117,7 @@ const Header = () => {
           <Avatar src="https://i.pravatar.cc/150?u=a04258a2462d826712d" size="md" />
           <div className='flex flex-col text-right'>
             <span className={`text-[#6c6c6c] text-sm my-auto hover:text-[#1a1a1a] ${color}`}>
-              {admin && admin.length > 0 ? admin[0].username : 'Loading...'}
+              {admin ? admin.username : 'Loading...'}
             </span>
             <span className={`text-[#6c6c6c] text-[7px] my-auto hover:text-[#1a1a1a] ${color} max-md:hidden`}>Admin</span>
           </div>

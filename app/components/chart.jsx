@@ -24,11 +24,11 @@ export default function Chart(props) {
     }
 
     const data = {
-        labels: ['Users', 'Products', 'Category', 'Sales'],
+        labels: ['Products', 'Orders', 'Category', 'Users'],
         datasets: [
             {
                 label: '# of Votes',
-                data: [u, p, c, o], // 4 عدد برای 4 برچسب
+                data: [p, o, c, u], // 4 عدد برای 4 برچسب
                 backgroundColor: [
                     'rgba(0, 148, 158, 0.78)',
                     'rgba(255, 197, 87, 0.78)',

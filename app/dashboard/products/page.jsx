@@ -4,7 +4,7 @@ import {
     DropdownMenu, DropdownTrigger, DropdownItem,
     Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Tooltip, Image, Chip, Button
 } from "@nextui-org/react";
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
@@ -23,14 +23,10 @@ const Products = () => {
         { uid: "CATEGORY", name: "Category" },
         { uid: "ACTION", name: "Action" }
     ];
-
     const { isOpen: isEditModalOpen, onOpen: onEditOpen, onOpenChange: onEditOpenChange } = useDisclosure();
     const { isOpen: isDeleteModalOpen, onOpen: onDeleteOpen, onOpenChange: onDeleteOpenChange } = useDisclosure();
-
-    const [data, setData] = useState([]);
     const [productIdToDelete, setProductIdToDelete] = useState(null);
     const [productIdToEdit, setProductIdToEdit] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState(["All"]);
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [title, setTitle] = useState('');
@@ -41,31 +37,16 @@ const Products = () => {
 
     // Fetch products data
     const fetcher = (url) => axios.get(url).then((res) => res.data);
-    const { data: products, error } = useSWR('http://localhost:8001/products', fetcher);
-
-    useEffect(() => {
-        if (products) {
-            setData(products);
-            const uniqueCategories = ["All", ...new Set(products.map(product => product.category))];
-            setCategories(uniqueCategories);
-            setLoading(false);
-        }
-        if (error) {
-            console.error("Error fetching data:", error);
-            setLoading(false);
-        }
-    }, [products, error]);
-
-    // Filter products by selected category
+    const { data, error, isLoading } = useSWR('/api/products/get-product', fetcher);
     const filteredData = selectedCategory === "All"
-        ? products
-        : products.filter(product => product.category === selectedCategory);
+        ? data
+        : data.filter(product => product.category === selectedCategory);
 
     const renderCell = (product, columnKey) => {
         const cellValue = product[columnKey];
         switch (columnKey) {
             case "ID":
-                return <p className="text-bold text-sm capitalize text-default-400">{product.id}</p>;
+                return <p className="text-bold text-sm capitalize text-default-400">{product.productId}</p>;
             case "IMAGE":
                 return (
                     <Image
@@ -93,7 +74,7 @@ const Products = () => {
                             <span className="text-lg text-danger cursor-pointer active:opacity-50">
                                 <DeleteRoundedIcon
                                     onClick={() => {
-                                        setProductIdToDelete(product.id);
+                                        setProductIdToDelete(product.productId);
                                         onDeleteOpen();
                                     }}
                                 />
@@ -124,16 +105,21 @@ const Products = () => {
         router.push('products/addproducts');
     };
 
+
     const deleteProduct = async () => {
         try {
-            await axios.delete(`http://localhost:8001/products/${productIdToDelete}`);
-            mutate('http://localhost:8001/products', (prevData) =>
-                prevData.filter((product) => product.id !== productIdToDelete)
-            );
-            toast.success("Product deleted successfully!");
-            onDeleteOpenChange();
+            if (productIdToDelete) {
+                const response = await axios.post(`/api/products/delete-product`, { productIdToDelete });
+                if (response.status === 200) {
+                    mutate('/api/products/get-product', (data) => data.filter(product => product.productId !== productIdToDelete), false);
+                    toast.success("Product deleted successfully!");
+                    setProductIdToDelete(null);
+                }
+            }
         } catch (error) {
-            toast.error("Error deleting product!");
+            toast.error(error.message);
+        } finally {
+            onDeleteOpenChange();
         }
     };
 
@@ -202,7 +188,7 @@ const Products = () => {
                 </div>
             </div>
 
-            {loading ? (
+            {isLoading ? (
                 <Skeleton className="rounded-xl">
                     <div className="flex flex-col gap-4">
                         {[...Array(5)].map((_, index) => (
@@ -232,7 +218,7 @@ const Products = () => {
                     </TableHeader>
                     <TableBody items={filteredData}>
                         {(item) => (
-                            <TableRow key={item.id}>
+                            <TableRow key={item.productId}>
                                 {(columnKey) => <TableCell
                                     className={columnKey === "CATEGORY" ||
                                         columnKey === "ID"
@@ -266,6 +252,9 @@ const Products = () => {
                     </ModalFooter>
                 </ModalContent>
             </Modal>
+
+
+
 
             {/* Modal for Edit */}
             <Modal backdrop="blur" isOpen={isEditModalOpen} onOpenChange={onEditOpenChange}>
